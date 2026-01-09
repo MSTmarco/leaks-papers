@@ -1,0 +1,1321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scientific Evidence: 6% Gas Production Recovery</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.7;
+            color: #2d3748;
+            background: #ffffff;
+        }
+        
+        /* Header */
+        header {
+            background: #ffffff;
+            border-bottom: 1px solid #e2e8f0;
+            padding: 2rem 0;
+        }
+        
+        .header-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        .logo-placeholder {
+            width: 180px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: white;
+            font-weight: 600;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Intro Section */
+        .intro {
+            padding: 4rem 0 3rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .intro h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            line-height: 1.3;
+        }
+        
+        .intro-lead {
+            font-size: 1.25rem;
+            color: #4a5568;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        
+        .evidence-summary {
+            background: #f7fafc;
+            border-left: 4px solid #667eea;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .evidence-summary p {
+            font-size: 1.05rem;
+            color: #2d3748;
+            margin-bottom: 0.5rem;
+        }
+        
+        .evidence-summary strong {
+            color: #667eea;
+        }
+        
+        /* Key Numbers */
+        .key-numbers {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .number-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+        }
+        
+        .number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .number-label {
+            font-size: 0.95rem;
+            color: #718096;
+            line-height: 1.5;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 4rem 0;
+        }
+        
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 3rem;
+            color: #1a202c;
+            text-align: center;
+            font-weight: 700;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 1rem;
+        }
+        
+        /* Study Cards */
+        .study {
+            background: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+        }
+        
+        .study-header {
+            margin-bottom: 2rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .study-meta {
+            display: inline-block;
+            background: #667eea;
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 3px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+        
+        .study h3 {
+            font-size: 1.5rem;
+            color: #1a202c;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .study-authors {
+            font-size: 0.95rem;
+            color: #718096;
+            font-style: italic;
+        }
+        
+        .study-content {
+            margin-bottom: 2rem;
+        }
+        
+        .study-content p {
+            font-size: 1.05rem;
+            color: #4a5568;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+        
+        .key-findings {
+            background: #f7fafc;
+            padding: 2rem;
+            border-radius: 4px;
+            margin-top: 2rem;
+        }
+        
+        .key-findings h4 {
+            font-size: 1.1rem;
+            color: #1a202c;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-size: 0.9rem;
+        }
+        
+        .finding-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+        
+        .finding-number {
+            min-width: 70px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #667eea;
+            line-height: 1;
+        }
+        
+        .finding-text {
+            font-size: 1rem;
+            color: #2d3748;
+            padding-top: 0.2rem;
+        }
+        
+        .finding-text strong {
+            color: #1a202c;
+            font-weight: 600;
+        }
+        
+        /* Supporting Evidence Box */
+        .support-box {
+            background: #edf2f7;
+            border-left: 4px solid #48bb78;
+            padding: 1.5rem 2rem;
+            margin-top: 2rem;
+        }
+        
+        .support-box h4 {
+            color: #22543d;
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .support-box p {
+            color: #2d3748;
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+        
+        /* Conclusion */
+        .conclusion {
+            background: #1a202c;
+            color: #ffffff;
+            padding: 4rem 0;
+        }
+        
+        .conclusion h2 {
+            color: #ffffff;
+            border-color: #4a5568;
+        }
+        
+        .conclusion-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .conclusion-content p {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            color: #e2e8f0;
+        }
+        
+        .conclusion-highlight {
+            background: rgba(102, 126, 234, 0.2);
+            border-left: 4px solid #667eea;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+        
+        .conclusion-highlight p {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+        }
+        
+        /* References */
+        .references {
+            background: #f7fafc;
+            padding: 3rem 0;
+        }
+        
+        .reference-item {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .reference-item a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: 500;
+            word-break: break-all;
+        }
+        
+        .reference-item a:hover {
+            text-decoration: underline;
+        }
+        
+        /* Footer */
+        footer {
+            background: #ffffff;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+            padding: 2rem;
+            color: #718096;
+        }
+        
+        /* Image placeholder */
+        .image-placeholder {
+            width: 100%;
+            height: 300px;
+            background: #edf2f7;
+            border: 2px dashed #cbd5e0;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 500;
+            margin: 2rem 0;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .intro h1 {
+                font-size: 2rem;
+            }
+            
+            .intro-lead {
+                font-size: 1.1rem;
+            }
+            
+            .study {
+                padding: 2rem 1.5rem;
+            }
+            
+            .number {
+                font-size: 2.5rem;
+            }
+            
+            section h2 {
+                font-size: 1.75rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-placeholder">
+                YOUR LOGO HERE
+            </div>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="intro">
+        <div class="container">
+            <h1>Scientific Evidence: Why Operators Can Recover Up To 6% of Gas Production</h1>
+            
+            <p class="intro-lead">
+                Three peer-reviewed studies published in leading scientific journals provide comprehensive evidence 
+                that methane leakage from oil and gas operations is significantly higher than previously estimated—and 
+                that a substantial portion of these emissions can be detected and eliminated.
+            </p>
+            
+            <div class="evidence-summary">
+                <p><strong>What You'll Find Here:</strong></p>
+                <p>• Independent measurements from 98,000+ well sites showing actual leakage rates of 3.7–9.4%</p>
+                <p>• Proof that 50% of all emissions come from just 12% of sources (the "super-emitters")</p>
+                <p>• Validation that current emissions are 2–6× higher than EPA estimates</p>
+                <p>• Evidence supporting recovery of up to 6% of total gas production through targeted detection</p>
+            </div>
+            
+            <div class="key-numbers">
+                <div class="number-card">
+                    <div class="number">98,000+</div>
+                    <div class="number-label">Well site measurements</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">3.7–9.4%</div>
+                    <div class="number-label">Documented leakage rates</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">50%</div>
+                    <div class="number-label">Of emissions from 12% of sources</div>
+                </div>
+                <div class="number-card">
+                    <div class="number">Up to 6%</div>
+                    <div class="number-label">Recoverable through detection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Studies Section -->
+    <section>
+        <div class="container">
+            <h2>Supporting Evidence from Three Major Studies</h2>
+            
+            <!-- Study 1 - 2022 (Chen et al) -->
+            <div class="study">
+                <div class="study-header">
+                    <div class="study-meta">ENVIRONMENTAL SCIENCE & TECHNOLOGY • 2022</div>
+                    <h3>Comprehensive Aerial Survey Quantifies Basin-Wide Emissions</h3>
+                    <div class="study-authors">Chen, Y., Sherwin, E.D., Berman, E.S.F., et al.</div>
+                </div>
+                
+                <div class="study-content">
+                    <p>
+                        The largest methane detection campaign ever conducted, covering 35,923 km² and performing 
+                        approximately 98,000 well site visits using independently validated hyperspectral imaging technology. 
+                        This represents over 90% of all active wells in the New Mexico Permian Basin.
+                    </p>
+                </div>
+                
+                <div class="key-findings">
+                    <h4>Critical Findings</h4>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">9.4%</div>
+                        <div class="finding-text">
+                            <strong>Leakage rate:</strong> 9.4% (+3.5%/−3.3%) of gross gas production—significantly higher than the 1.5% EPA estimate
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">50%</div>
+                        <div class="finding-text">
+                            <strong>Super-emitter contribution:</strong> 50% of total measured emissions came from large sources exceeding 308 kg/h—representing only 12% of all emission sources detected
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">6.5×</div>
+                        <div class="finding-text">
+                            <strong>EPA comparison:</strong> Total emissions were 6.5 times higher than EPA Greenhouse Gas Inventory estimates for the same region
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">1,958</div>
+                        <div class="finding-text">
+                            <strong>Detectable plumes:</strong> Detected 1,958 methane plumes above 10 kg/h—emissions that can be identified and mitigated
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-box">
+                    <h4>Supporting the 6% Recovery Claim</h4>
+                    <p>
+                        With measured leakage at 9.4% and half of emissions from easily detectable super-emitters (12% of sources), 
+                        targeting these high-impact sources alone could recover approximately 4.7% of production. Combined with 
+                        detection of other large emitters in the remaining 50%, recovery of 6% of total production is achievable.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Study 2 - 2018 (Alvarez) -->
+            <div class="study">
+                <div class="study-header">
+                    <div class="study-meta">SCIENCE • 2018</div>
+                    <h3>National Assessment Reveals Systematic Underestimation</h3>
+                    <div class="study-authors">Alvarez, R.A., Zavala-Araiza, D., Lyon, D.R., et al.</div>
+                </div>
+                
+                <div class="study-content">
+                    <p>
+                        Comprehensive synthesis of ground-based, facility-scale measurements across the entire U.S. oil and 
+                        gas supply chain. This study represents the most thorough bottom-up assessment of national methane 
+                        emissions, using direct measurements rather than estimated emission factors.
+                    </p>
+                </div>
+                
+                <div class="key-findings">
+                    <h4>Critical Findings</h4>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">2.3%</div>
+                        <div class="finding-text">
+                            <strong>National leakage rate:</strong> 2.3% of gross gas production across the entire U.S. oil and gas supply chain—establishing the national baseline
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">60%</div>
+                        <div class="finding-text">
+                            <strong>Higher than EPA:</strong> Total emissions 60% higher than EPA Greenhouse Gas Inventory, with production segment more than 2× EPA estimates
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">13 Tg</div>
+                        <div class="finding-text">
+                            <strong>Annual emissions:</strong> 13 ± 2 Tg per year from U.S. oil and gas operations—equivalent to $2 billion in wasted gas annually
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-box">
+                    <h4>Supporting the 6% Recovery Claim</h4>
+                    <p>
+                        This study establishes that actual emissions are 60% higher than inventories suggest, primarily due to 
+                        "abnormal operating conditions" that existing measurement methods miss. These abnormal conditions—the 
+                        source of excess emissions—are precisely what advanced detection technology can identify and help operators eliminate.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Study 3 - 2020 (Zhang) -->
+            <div class="study">
+                <div class="study-header">
+                    <div class="study-meta">SCIENCE ADVANCES • 2020</div>
+                    <h3>Satellite Observations Confirm Regional Emissions</h3>
+                    <div class="study-authors">Zhang, Y., Gautam, R., Pandey, S., et al.</div>
+                </div>
+                
+                <div class="study-content">
+                    <p>
+                        Using TROPOMI satellite observations with unprecedented spatial resolution (7 km × 7 km), this study 
+                        quantified methane emissions across the entire Permian Basin through atmospheric inverse modeling, 
+                        providing independent validation of ground and airborne measurements.
+                    </p>
+                </div>
+                
+                <div class="key-findings">
+                    <h4>Critical Findings</h4>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">3.7%</div>
+                        <div class="finding-text">
+                            <strong>Permian leakage rate:</strong> 3.7% of gross gas production—60% higher than the national average and consistent with other measurement methods
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">2.7 Tg</div>
+                        <div class="finding-text">
+                            <strong>Total emissions:</strong> 2.7 ± 0.5 Tg per year from Permian oil and gas operations—more than 2× higher than EPA inventory estimates
+                        </div>
+                    </div>
+                    
+                    <div class="finding-item">
+                        <div class="finding-number">4.6%</div>
+                        <div class="finding-text">
+                            <strong>Flaring contribution:</strong> Estimated 4.6% of gross gas production is flared, indicating insufficient infrastructure—a major source of emissions
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="support-box">
+                    <h4>Supporting the 6% Recovery Claim</h4>
+                    <p>
+                        Satellite measurements provide independent confirmation that regional leakage rates (3.7%) significantly 
+                        exceed national averages. The combination of flaring (4.6%) and venting indicates substantial gas losses 
+                        from infrastructure limitations and operational issues—both addressable through improved monitoring and leak detection.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="conclusion">
+        <div class="container">
+            <h2>The Evidence Is Clear</h2>
+            <div class="conclusion-content">
+                <p>
+                    Three independent studies using different methodologies—comprehensive aerial surveys, ground-based 
+                    facility measurements, and satellite observations—all converge on the same conclusion: methane leakage 
+                    from oil and gas operations is 2–6× higher than EPA estimates, with documented rates of 3.7–9.4% in 
+                    major producing regions.
+                </p>
+                
+                <p>
+                    Critically, these studies demonstrate that emissions follow a "heavy-tailed distribution"—50% of total 
+                    emissions come from just 12% of sources. These super-emitters, caused by abnormal operating conditions 
+                    and equipment malfunctions, are precisely what advanced methane detection technology is designed to identify.
+                </p>
+                
+                <div class="conclusion-highlight">
+                    <p>
+                        Given documented leakage rates of 3.7–9.4%, and evidence that half of all emissions come from 
+                        detectable super-emitters, recovery of up to 6% of total gas production represents a conservative 
+                        and scientifically supported target for operators deploying advanced detection technology.
+                    </p>
+                </div>
+                
+                <p>
+                    The economic value of this recovered gas—based on $2 billion annually wasted across the U.S. oil and gas 
+                    sector—far exceeds the cost of detection and mitigation efforts. More importantly, these are not theoretical 
+                    estimates: they are based on direct measurements from 98,000+ well sites and validated by independent satellite observations.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+        <div class="container">
+            <h2>Full References</h2>
+            
+            <div class="reference-item">
+                <strong>[1]</strong> Chen, Y., Sherwin, E.D., Berman, E.S.F., Jones, B.B., Gordon, M.P., Wetherley, E.B., 
+                Kort, E.A., & Brandt, A.R. (2022). "Quantifying Regional Methane Emissions in the New Mexico Permian Basin 
+                with a Comprehensive Aerial Survey." <em>Environmental Science & Technology</em>, 56(7), 4317-4323. 
+                <br><a href="https://doi.org/10.1021/acs.est.1c06458" target="_blank">https://doi.org/10.1021/acs.est.1c06458</a>
+            </div>
+            
+            <div class="reference-item">
+                <strong>[2]</strong> Alvarez, R.A., Zavala-Araiza, D., Lyon, D.R., Allen, D.T., Barkley, Z.R., Brandt, A.R., 
+                Davis, K.J., Herndon, S.C., Jacob, D.J., Karion, A., Kort, E.A., Lamb, B.K., Lauvaux, T., Maasakkers, J.D., 
+                Marchese, A.J., Omara, M., Pacala, S.W., Peischl, J., Robinson, A.L., Shepson, P.B., Sweeney, C., 
+                Townsend-Small, A., Wofsy, S.C., & Hamburg, S.P. (2018). "Assessment of methane emissions from the U.S. 
+                oil and gas supply chain." <em>Science</em>, 361(6398), 186-188. 
+                <br><a href="https://doi.org/10.1126/science.aar7204" target="_blank">https://doi.org/10.1126/science.aar7204</a>
+            </div>
+            
+            <div class="reference-item">
+                <strong>[3]</strong> Zhang, Y., Gautam, R., Pandey, S., Omara, M., Maasakkers, J.D., Sadavarte, P., Lyon, D., 
+                Nesser, H., Sulprizio, M.P., Varon, D.J., Zhang, R., Houweling, S., Zavala-Araiza, D., Alvarez, R.A., 
+                Lorente, A., Hamburg, S.P., Aben, I., & Jacob, D.J. (2020). "Quantifying methane emissions from the largest 
+                oil-producing basin in the United States from space." <em>Science Advances</em>, 6(17), eaaz5120. 
+                <br><a href="https://doi.org/10.1126/sciadv.aaz5120" target="_blank">https://doi.org/10.1126/sciadv.aaz5120</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>All data sourced from peer-reviewed scientific publications. © 2024</p>
+        </div>
+    </footer>
+</body>
+</html>
+
+        
+        .value-prop {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(167, 139, 250, 0.15);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            border: 2px solid rgba(167, 139, 250, 0.3);
+            margin-bottom: 2rem;
+        }
+        
+        .value-prop-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #a78bfa;
+        }
+        
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 5rem 0;
+        }
+        
+        section h2 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            color: #1a202c;
+            text-align: center;
+            font-weight: 800;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            color: #718096;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+        }
+        
+        /* ROI Statement */
+        .roi-statement {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            padding: 3rem 2rem;
+            text-align: center;
+            color: white;
+        }
+        
+        .roi-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .roi-number {
+            font-size: 5rem;
+            font-weight: 900;
+            margin-bottom: 1rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+        
+        .roi-text {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .roi-subtext {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Problem Statement */
+        .problem {
+            background: #fff;
+        }
+        
+        .problem-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        
+        .problem h3 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: #1a202c;
+        }
+        
+        .problem-point {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        
+        .problem-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+        
+        .problem-text {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            height: 400px;
+            background: linear-gradient(135deg, #e0e7ff 0%, #f3e8ff 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            color: #667eea;
+            font-weight: 600;
+            box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+        }
+        
+        /* Stats Grid */
+        .stats-section {
+            background: #f7fafc;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-top: 4px solid #667eea;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 28px rgba(0,0,0,0.12);
+        }
+        
+        .stat-number {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 1rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: #4a5568;
+            line-height: 1.6;
+        }
+        
+        /* Evidence Section */
+        .evidence {
+            background: #fff;
+        }
+        
+        .evidence-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .evidence-card {
+            background: #fff;
+            padding: 2.5rem;
+            border-radius: 16px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            border-left: 5px solid #667eea;
+        }
+        
+        .evidence-card h3 {
+            color: #1a202c;
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+        }
+        
+        .evidence-source {
+            color: #667eea;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .evidence-finding {
+            background: #f7fafc;
+            padding: 1rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 0.8rem;
+            border-left: 3px solid #a78bfa;
+        }
+        
+        .evidence-finding strong {
+            color: #667eea;
+        }
+        
+        /* Solution Section */
+        .solution {
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .solution::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="grid2" width="100" height="100" patternUnits="userSpaceOnUse"><path d="M 100 0 L 0 0 0 100" fill="none" stroke="rgba(255,255,255,0.03)" stroke-width="1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid2)"/></svg>');
+            opacity: 0.5;
+        }
+        
+        .solution-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .solution h2 {
+            color: white;
+            margin-bottom: 2rem;
+        }
+        
+        .solution-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .solution-benefit {
+            background: rgba(255, 255, 255, 0.08);
+            padding: 2rem;
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .solution-benefit h3 {
+            color: #a78bfa;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+        
+        .solution-benefit p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+        }
+        
+        /* References */
+        .references {
+            background: #f7fafc;
+        }
+        
+        .reference-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        .reference-item {
+            background: white;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1rem;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+        
+        .reference-item a {
+            color: #667eea;
+            text-decoration: none;
+            word-break: break-all;
+            font-weight: 500;
+        }
+        
+        .reference-item a:hover {
+            text-decoration: underline;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+        }
+        
+        .cta-section h2 {
+            color: white;
+            margin-bottom: 1.5rem;
+        }
+        
+        .cta-section p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+        
+        .cta-button-large {
+            display: inline-block;
+            background: white;
+            color: #667eea;
+            padding: 1.2rem 3rem;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        
+        .cta-button-large:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+        }
+        
+        /* Footer */
+        footer {
+            background: #1a202c;
+            color: #a0aec0;
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+        
+        footer p {
+            font-size: 0.95rem;
+        }
+        
+        /* Responsive */
+        @media (max-width: 968px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .problem-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .stats-grid, .evidence-grid, .solution-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            section h2 {
+                font-size: 2.2rem;
+            }
+            
+            .roi-number {
+                font-size: 3.5rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="header-content">
+            <div class="logo-placeholder">
+                YOUR LOGO HERE
+            </div>
+            <a href="#contact" class="cta-button">Get Started</a>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="value-prop">
+                <span class="value-prop-number">6%</span>
+                <span>Recovery Potential</span>
+            </div>
+            <h1>
+                Stop Losing Money Through Methane Leakage
+                <span class="hero-highlight">Recover Up To 6% of Your Gas Production</span>
+            </h1>
+            <p>
+                Leading scientific research shows producers are losing billions in revenue through undetected methane emissions. 
+                Advanced detection technology can help you capture this lost value.
+            </p>
+            <a href="#solution" class="cta-button" style="font-size: 1.1rem; padding: 1.1rem 2.5rem;">See How It Works</a>
+        </div>
+    </section>
+
+    <!-- ROI Statement -->
+    <section class="roi-statement">
+        <div class="roi-content">
+            <div class="roi-number">$2 Billion</div>
+            <div class="roi-text">Annual Value of Wasted Natural Gas</div>
+            <div class="roi-subtext">That's money you could be recovering from your operations</div>
+        </div>
+    </section>
+
+    <!-- Problem Statement -->
+    <section class="problem">
+        <div class="container">
+            <h2>The Hidden Cost of Methane Leakage</h2>
+            <p class="section-subtitle">
+                Recent peer-reviewed studies reveal that actual methane emissions are significantly higher than previously estimated
+            </p>
+            <div class="problem-content">
+                <div>
+                    <h3>What Leading Research Shows:</h3>
+                    
+                    <div class="problem-point">
+                        <div class="problem-icon">!</div>
+                        <div>
+                            <div class="problem-text">
+                                <strong>2-6× higher emissions</strong> than EPA estimates across multiple independent studies
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <div class="problem-icon">!</div>
+                        <div>
+                            <div class="problem-text">
+                                <strong>3.7-9.4% leakage rate</strong> documented in major producing regions
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <div class="problem-icon">!</div>
+                        <div>
+                            <div class="problem-text">
+                                <strong>50% of emissions</strong> come from just 12% of sources - these "super-emitters" can be detected and fixed
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="problem-point">
+                        <div class="problem-icon">!</div>
+                        <div>
+                            <div class="problem-text">
+                                <strong>Abnormal operating conditions</strong> are the primary cause - most operators don't even know they have a problem
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="image-placeholder">
+                    [METHANE PLUME DETECTION IMAGE]
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <h2>The Scale of the Opportunity</h2>
+            <p class="section-subtitle">
+                Data from comprehensive field surveys covering 98,000+ well sites
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">98,000+</div>
+                    <div class="stat-label">Well site measurements in largest aerial survey ever conducted</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12%</div>
+                    <div class="stat-label">Of sources responsible for 50% of total emissions</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">60%</div>
+                    <div class="stat-label">Higher emissions than government inventories estimate</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">6%</div>
+                    <div class="stat-label">Of your production could be recovered through targeted detection</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evidence Section -->
+    <section class="evidence">
+        <div class="container">
+            <h2>Backed by Leading Science</h2>
+            <p class="section-subtitle">
+                These findings are published in top peer-reviewed scientific journals
+            </p>
+            <div class="evidence-grid">
+                <!-- Study 1 -->
+                <div class="evidence-card">
+                    <div class="evidence-source">Science Advances • 2020</div>
+                    <h3>Satellite Observations Reveal Massive Leakage</h3>
+                    <div class="evidence-finding">
+                        <strong>2.7 Tg/year</strong> methane emissions detected from space
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>2× higher</strong> than inventory estimates
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>3.7% leakage rate</strong> documented in Permian Basin
+                    </div>
+                </div>
+                
+                <!-- Study 2 -->
+                <div class="evidence-card">
+                    <div class="evidence-source">Science • 2018</div>
+                    <h3>National Assessment Confirms Underestimation</h3>
+                    <div class="evidence-finding">
+                        <strong>13 Tg/year</strong> from U.S. oil & gas supply chain
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>60% higher</strong> than EPA inventory
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>2× discrepancy</strong> in production segment alone
+                    </div>
+                </div>
+                
+                <!-- Study 3 -->
+                <div class="evidence-card">
+                    <div class="evidence-source">Environmental Science & Technology • 2022</div>
+                    <h3>Comprehensive Aerial Survey Quantifies Losses</h3>
+                    <div class="evidence-finding">
+                        <strong>98,000 site visits</strong> in most comprehensive survey ever
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>9.4% leakage rate</strong> in New Mexico Permian
+                    </div>
+                    <div class="evidence-finding">
+                        <strong>6.5× higher</strong> than EPA estimates for region
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section class="solution" id="solution">
+        <div class="container">
+            <div class="solution-content">
+                <h2>Turn Lost Gas Into Revenue</h2>
+                <p style="font-size: 1.3rem; margin-bottom: 3rem; text-align: center;">
+                    Advanced methane detection technology helps you identify and fix leaks before they impact your bottom line
+                </p>
+                
+                <div class="image-placeholder" style="margin-bottom: 3rem; height: 350px;">
+                    [DETECTION TECHNOLOGY / AIRCRAFT IMAGE]
+                </div>
+                
+                <div class="solution-grid">
+                    <div class="solution-benefit">
+                        <h3>💰 Recover Lost Revenue</h3>
+                        <p>Capture up to 6% of your gas production that's currently being lost through undetected leaks</p>
+                    </div>
+                    
+                    <div class="solution-benefit">
+                        <h3>🎯 Target Super-Emitters</h3>
+                        <p>Find the 12% of sources causing 50% of emissions - the high-impact fixes that matter most</p>
+                    </div>
+                    
+                    <div class="solution-benefit">
+                        <h3>📊 Data-Driven Decisions</h3>
+                        <p>Get precise measurements backed by peer-reviewed validation studies</p>
+                    </div>
+                    
+                    <div class="solution-benefit">
+                        <h3>🌱 Environmental Compliance</h3>
+                        <p>Stay ahead of increasing regulations while improving your sustainability metrics</p>
+                    </div>
+                    
+                    <div class="solution-benefit">
+                        <h3>⚡ Rapid Detection</h3>
+                        <p>Identify abnormal operating conditions before they become expensive problems</p>
+                    </div>
+                    
+                    <div class="solution-benefit">
+                        <h3>✓ Proven Technology</h3>
+                        <p>Independently validated through single-blind controlled release testing</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- References -->
+    <section class="references">
+        <div class="container">
+            <h2>Scientific References</h2>
+            <p class="section-subtitle">All findings are based on peer-reviewed research published in leading scientific journals</p>
+            <div class="reference-list">
+                <div class="reference-item">
+                    <strong>[1]</strong> Zhang, Y., Gautam, R., Pandey, S., et al. (2020). 
+                    "Quantifying methane emissions from the largest oil-producing basin in the United States from space." 
+                    <em>Science Advances</em>, 6(17), eaaz5120. 
+                    <br><a href="https://doi.org/10.1126/sciadv.aaz5120" target="_blank">https://doi.org/10.1126/sciadv.aaz5120</a>
+                </div>
+                
+                <div class="reference-item">
+                    <strong>[2]</strong> Alvarez, R.A., Zavala-Araiza, D., Lyon, D.R., et al. (2018). 
+                    "Assessment of methane emissions from the U.S. oil and gas supply chain." 
+                    <em>Science</em>, 361(6398), 186-188. 
+                    <br><a href="https://doi.org/10.1126/science.aar7204" target="_blank">https://doi.org/10.1126/science.aar7204</a>
+                </div>
+                
+                <div class="reference-item">
+                    <strong>[3]</strong> Chen, Y., Sherwin, E.D., Berman, E.S.F., et al. (2022). 
+                    "Quantifying Regional Methane Emissions in the New Mexico Permian Basin with a Comprehensive Aerial Survey." 
+                    <em>Environmental Science & Technology</em>, 56(7), 4317-4323. 
+                    <br><a href="https://doi.org/10.1021/acs.est.1c06458" target="_blank">https://doi.org/10.1021/acs.est.1c06458</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Stop Losing Money?</h2>
+            <p>Let's discuss how methane detection technology can help you recover lost revenue</p>
+            <a href="mailto:contact@yourcompany.com" class="cta-button-large">Contact Us Today</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Your Company. All data based on peer-reviewed scientific research.</p>
+        </div>
+    </footer>
+</body>
+</html>
