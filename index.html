@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Evidence Brief: 6% Production Recovery Potential</title>
+    <title>Evidence Brief: 6% Production Recovery Potential | Informe de Evidencia</title>
     <style>
         * {
             margin: 0;
@@ -23,11 +23,32 @@
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
         
+        /* Language Content */
+        .lang-content {
+            display: none;
+        }
+        
+        .lang-content.active {
+            display: block;
+        }
+        
+        /* Inline language content (for header) */
+        strong .lang-content,
+        .doc-info .lang-content {
+            display: inline;
+        }
+        
+        strong .lang-content:not(.active),
+        .doc-info .lang-content:not(.active) {
+            display: none;
+        }
+        
         /* Header */
         header {
             background: #f8f9fa;
             border-bottom: 3px solid #000;
             padding: 2rem 0;
+            position: relative;
         }
         
         .header-content {
@@ -62,6 +83,38 @@
             display: block;
             color: #000;
             font-size: 0.9rem;
+        }
+        
+        /* Language Switcher */
+        .lang-switcher {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 10;
+        }
+        
+        .lang-btn {
+            padding: 0.5rem 1rem;
+            background: #fff;
+            border: 2px solid #000;
+            color: #000;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 0.85rem;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .lang-btn:hover {
+            background: #f0f0f0;
+        }
+        
+        .lang-btn.active {
+            background: #000;
+            color: #fff;
         }
         
         /* Container */
@@ -101,8 +154,6 @@
             grid-template-columns: repeat(3, 1fr);
             gap: 2rem;
             margin-top: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid #333;
         }
         
         .evidence-point {
@@ -118,72 +169,62 @@
         
         .evidence-label {
             font-size: 0.9rem;
-            opacity: 0.9;
-        }
-        
-        /* Section */
-        section {
-            padding: 3rem 0;
-            border-bottom: 1px solid #ddd;
-        }
-        
-        section:last-of-type {
-            border-bottom: none;
-        }
-        
-        section h2 {
-            font-size: 1.5rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
+            opacity: 0.8;
             text-transform: uppercase;
             letter-spacing: 1px;
-            font-size: 1rem;
+        }
+        
+        /* Content Sections */
+        section {
+            padding: 3rem 0;
+        }
+        
+        h2 {
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
             padding-bottom: 0.5rem;
             border-bottom: 2px solid #000;
+            font-weight: 700;
         }
         
         /* Study Cards */
         .study {
             margin-bottom: 3rem;
-            page-break-inside: avoid;
+            padding-bottom: 3rem;
+            border-bottom: 1px solid #e0e0e0;
         }
         
         .study:last-child {
-            margin-bottom: 0;
+            border-bottom: none;
         }
         
         .study-header {
             display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 1px solid #ddd;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
         }
         
         .study-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: #ddd;
-            line-height: 1;
+            color: #000;
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            min-width: 60px;
         }
         
         .study-meta {
-            text-align: right;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             text-transform: uppercase;
             letter-spacing: 1px;
             color: #666;
-            font-weight: 600;
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            font-weight: 700;
         }
         
         .study h3 {
-            font-size: 1.3rem;
+            font-size: 1.5rem;
             margin-bottom: 0.5rem;
             font-weight: 700;
-            line-height: 1.3;
         }
         
         .study-authors {
@@ -194,8 +235,8 @@
         }
         
         .study-summary {
-            font-size: 1rem;
-            line-height: 1.7;
+            font-size: 1.05rem;
+            line-height: 1.8;
             margin-bottom: 1.5rem;
             color: #333;
         }
@@ -329,6 +370,10 @@
             .bottom-line {
                 page-break-inside: avoid;
             }
+            
+            .lang-switcher {
+                display: none;
+            }
         }
         
         /* Responsive */
@@ -351,9 +396,10 @@
                 align-items: flex-start;
             }
             
-            .study-meta {
-                text-align: left;
-                margin-top: 0.5rem;
+            .lang-switcher {
+                position: static;
+                justify-content: center;
+                margin-bottom: 1rem;
             }
         }
     </style>
@@ -361,283 +407,613 @@
 <body>
     <!-- Header -->
     <header>
+        <div class="lang-switcher">
+            <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+            <button class="lang-btn" onclick="switchLanguage('es')">ES</button>
+        </div>
         <div class="header-content">
             <div class="logo-placeholder">
                 <img src="vorntec.png" alt="Vorntec Logo" style="max-width: 100%; max-height: 100%; object-fit: contain;">
             </div>
             <div class="doc-info">
-                <strong>Evidence Brief</strong>
-                January 2026
+                <strong>
+                    <span class="lang-content active" data-lang="en">Evidence Brief</span>
+                    <span class="lang-content" data-lang="es">Informe de Evidencia</span>
+                </strong>
+                <span class="lang-content active" data-lang="en">January 2026</span>
+                <span class="lang-content" data-lang="es">Enero 2026</span>
             </div>
         </div>
     </header>
 
-    <!-- Executive Summary -->
-    <section class="executive-summary">
-        <div class="container">
-            <h1>Methane Detection: Evidence Supporting 6% Production Recovery</h1>
-            
-            <p class="key-finding">
-                Three independent peer-reviewed studies demonstrate that <strong>detectable methane emissions 
-                (fugitive leaks, abnormal operating conditions, and equipment malfunctions) represent 8–9% of gas production,</strong> 
-                with <strong>50% concentrated in just 12% of sources.</strong> These emissions <strong>persist until detected and repaired,</strong> 
-                enabling operators to <strong>recover up to 6% of total gas production.</strong>
-            </p>
-            
-            <div class="evidence-points">
-                <div class="evidence-point">
-                    <div class="evidence-number">98,000+</div>
-                    <div class="evidence-label">Site measurements</div>
-                </div>
-                <div class="evidence-point">
-                    <div class="evidence-number">3-5 hours</div>
-                    <div class="evidence-label">Avg. event duration<br>(until detected)</div>
-                </div>
-                <div class="evidence-point">
-                    <div class="evidence-number">6%</div>
-                    <div class="evidence-label">Recoverable production</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Study 1 -->
-    <section>
-        <div class="container">
-            <h2>Supporting Evidence</h2>
-            
-            <div class="study">
-                <div class="study-header">
-                    <div class="study-number">01</div>
-                    <div class="study-meta">Environmental Science & Technology • 2022</div>
-                </div>
+    <!-- ENGLISH CONTENT -->
+    <div class="lang-content active" data-lang="en">
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <div class="container">
+                <h1>Methane Detection: Evidence Supporting 6% Production Recovery</h1>
                 
-                <h3>Basin-Wide Aerial Survey: 98,000 Well Sites Measured</h3>
-                <p class="study-authors">Chen, Sherwin, Berman, et al.</p>
-                
-                <p class="study-summary">
-                    The largest methane detection campaign ever conducted. Independently validated hyperspectral imaging 
-                    technology measured 90% of all active wells in the New Mexico Permian Basin over 15 months.
+                <p class="key-finding">
+                    Three independent peer-reviewed studies demonstrate that <strong>detectable methane emissions 
+                    (fugitive leaks, abnormal operating conditions, and equipment malfunctions) represent 8–9% of gas production,</strong> 
+                    with <strong>50% concentrated in just 12% of sources.</strong> These emissions <strong>persist until detected and repaired,</strong> 
+                    enabling operators to <strong>recover up to 6% of total gas production.</strong>
                 </p>
                 
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>Finding</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Survey Scope</td>
-                            <td class="metric">35,923 km² | 26,292 wells | ~98,000 visits</td>
-                        </tr>
-                        <tr>
-                            <td>Measured Leakage Rate</td>
-                            <td class="metric">9.4% (+3.5%/−3.3%)</td>
-                        </tr>
-                        <tr>
-                            <td>Super-Emitter Contribution</td>
-                            <td class="metric">50% of emissions from 12% of sources</td>
-                        </tr>
-                        <tr>
-                            <td>vs. EPA Inventory</td>
-                            <td class="metric">6.5× higher</td>
-                        </tr>
-                        <tr>
-                            <td>Detectable Plumes</td>
-                            <td class="metric">1,958 plumes above 10 kg/h</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="evidence-points">
+                    <div class="evidence-point">
+                        <div class="evidence-number">98,000+</div>
+                        <div class="evidence-label">Site measurements</div>
+                    </div>
+                    <div class="evidence-point">
+                        <div class="evidence-number">3-5 hours</div>
+                        <div class="evidence-label">Avg. event duration<br>(until detected)</div>
+                    </div>
+                    <div class="evidence-point">
+                        <div class="evidence-number">6%</div>
+                        <div class="evidence-label">Recoverable production</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study 1 -->
+        <section>
+            <div class="container">
+                <h2>Supporting Evidence</h2>
                 
-                <div class="implications">
-                    <h4>Implications for 6% Recovery</h4>
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">01</div>
+                        <div class="study-meta">Environmental Science & Technology • 2022</div>
+                    </div>
+                    
+                    <h3>Basin-Wide Aerial Survey: 98,000 Well Sites Measured</h3>
+                    <p class="study-authors">Chen, Sherwin, Berman, et al.</p>
+                    
+                    <p class="study-summary">
+                        The largest methane detection campaign ever conducted. Independently validated hyperspectral imaging 
+                        technology measured 90% of all active wells in the New Mexico Permian Basin over 15 months.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Survey Scope</td>
+                                <td class="metric">35,923 km² | 26,292 wells | ~98,000 visits</td>
+                            </tr>
+                            <tr>
+                                <td>Measured Leakage Rate</td>
+                                <td class="metric">9.4% (+3.5%/−3.3%)</td>
+                            </tr>
+                            <tr>
+                                <td>Super-Emitter Contribution</td>
+                                <td class="metric">50% of emissions from 12% of sources</td>
+                            </tr>
+                            <tr>
+                                <td>vs. EPA Inventory</td>
+                                <td class="metric">6.5× higher</td>
+                            </tr>
+                            <tr>
+                                <td>Detectable Plumes</td>
+                                <td class="metric">1,958 plumes above 10 kg/h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implications for 6% Recovery</h4>
+                        <p>
+                            With 9.4% total emissions, approximately 8.5% represents detectable sources (fugitive leaks, 
+                            equipment malfunctions, abnormal conditions) after excluding ~1% from flaring. With 50% from 
+                            super-emitters (12% of sources), targeting these alone yields 4.25% recoverable. Including 
+                            additional detectable large emitters brings recovery to 6%.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">02</div>
+                        <div class="study-meta">SPE Journal • 2024</div>
+                    </div>
+                    
+                    <h3>Emission Duration Analysis: Operational Data Framework</h3>
+                    <p class="study-authors">Higgins, Hecobian, Baasandorj, Pacsi (Chevron Corporation)</p>
+                    
+                    <p class="study-summary">
+                        First industry framework for estimating emission duration using operational data from 26,292 active Permian wells. 
+                        Demonstrates that fugitive emissions persist indefinitely until detected and repaired—making frequent monitoring critical for gas recovery.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Average Event Duration</td>
+                                <td class="metric">3–5 hours (Wang et al. 2022)</td>
+                            </tr>
+                            <tr>
+                                <td>Sample Size</td>
+                                <td class="metric">26,292 active wells | Same Chen 2022 dataset</td>
+                            </tr>
+                            <tr>
+                                <td>Duration Attribution</td>
+                                <td class="metric">79% of emissions traced via operational data</td>
+                            </tr>
+                            <tr>
+                                <td>Impact Example</td>
+                                <td class="metric">100 kg/h leak: 0.16% lost if undetected 6 months vs. 0.001% if detected in 1 day</td>
+                            </tr>
+                            <tr>
+                                <td>Key Insight</td>
+                                <td class="metric">Emissions persist until repaired—don't self-heal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implications for 6% Recovery</h4>
+                        <p>
+                            Duration analysis proves emissions continue wasting gas indefinitely without detection. A single 100 kg/h 
+                            source undetected for 6 months equals 0.16% of annual production lost. Frequent detection enabling 
+                            same-day repair vs. quarterly inspection reduces waste by 99%, directly enabling 6% recovery targets.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">03</div>
+                        <div class="study-meta">Science Advances • 2020</div>
+                    </div>
+                    
+                    <h3>Satellite Validation: Independent Confirmation</h3>
+                    <p class="study-authors">Zhang, Gautam, Pandey, et al.</p>
+                    
+                    <p class="study-summary">
+                        TROPOMI satellite observations with 7 km × 7 km resolution provide independent validation 
+                        through atmospheric inverse modeling across the entire Permian Basin.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Metric</th>
+                                <th>Finding</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Permian Leakage Rate</td>
+                                <td class="metric">3.7% of gross production</td>
+                            </tr>
+                            <tr>
+                                <td>Total Basin Emissions</td>
+                                <td class="metric">2.7 ± 0.5 Tg/year</td>
+                            </tr>
+                            <tr>
+                                <td>vs. National Average</td>
+                                <td class="metric">60% higher than U.S. baseline</td>
+                            </tr>
+                            <tr>
+                                <td>vs. EPA Inventory</td>
+                                <td class="metric">2× higher</td>
+                            </tr>
+                            <tr>
+                                <td>Flaring Rate</td>
+                                <td class="metric">4.6% of production</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implications for 6% Recovery</h4>
+                        <p>
+                            Satellite measurements independently confirm 3.7% emissions rate. With ~1% from flaring 
+                            (monitored separately via combustion control systems), approximately 2.7% represents 
+                            detectable fugitive leaks and equipment malfunctions. Combined with Chen's 9.4% findings, 
+                            the evidence supports 6% recovery from detectable sources excluding flaring.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Line -->
+        <section class="bottom-line">
+            <div class="container">
+                <h2>Bottom Line</h2>
+                
+                <p class="conclusion-text">
+                    Three independent studies using different methodologies—comprehensive aerial surveys (98,000 sites), 
+                    operational duration analysis, and satellite observations—demonstrate consistent findings:
+                </p>
+                
+                <p class="conclusion-text">
+                    <strong>Detectable methane emissions (fugitive leaks, abnormal operating conditions, and equipment malfunctions) 
+                    represent 8–9% of gas production,</strong> with <strong>50% concentrated in just 12% of sources.</strong> 
+                    These super-emitters persist indefinitely until detected, with average event durations of 3–5 hours but 
+                    cumulative losses growing with each day undetected.
+                </p>
+                
+                <div class="highlight-box">
                     <p>
-                        With 9.4% total emissions, approximately 8.5% represents detectable sources (fugitive leaks, 
-                        equipment malfunctions, abnormal conditions) after excluding ~1% from flaring. With 50% from 
-                        super-emitters (12% of sources), targeting these alone yields 4.25% recoverable. Including 
-                        additional detectable large emitters brings recovery to 6%.
+                        Recovery of 6% represents a conservative and scientifically validated target. With 9.4% total emissions 
+                        and ~1% from flaring (monitored separately), 8–9% remains detectable via advanced monitoring. 
+                        Targeting the 12% of super-emitter sources alone recovers 4.25%. Including additional detectable 
+                        sources brings total recovery to 6%.
                     </p>
                 </div>
+                
+                <p class="conclusion-text">
+                    Duration analysis proves the critical insight: <strong>fugitive emissions don't self-heal.</strong> 
+                    A 100 kg/h leak undetected for 6 months wastes 0.16% of annual production, while same-day detection 
+                    reduces loss to 0.001%—enabling the 6% recovery target through frequent, comprehensive monitoring.
+                </p>
             </div>
-            
-            <div class="study">
-                <div class="study-header">
-                    <div class="study-number">02</div>
-                    <div class="study-meta">SPE Journal • 2024</div>
+        </section>
+
+        <!-- References -->
+        <section class="references">
+            <div class="container">
+                <h2>References</h2>
+                
+                <div class="reference-item">
+                    [1] Chen, Y., Sherwin, E.D., Berman, E.S.F., Jones, B.B., Gordon, M.P., Wetherley, E.B., 
+                    Kort, E.A., & Brandt, A.R. (2022). Quantifying Regional Methane Emissions in the New Mexico 
+                    Permian Basin with a Comprehensive Aerial Survey. <em>Environmental Science & Technology</em>, 
+                    56(7), 4317-4323. <a href="https://doi.org/10.1021/acs.est.1c06458">doi:10.1021/acs.est.1c06458</a>
                 </div>
                 
-                <h3>Emission Duration Analysis: Operational Data Framework</h3>
-                <p class="study-authors">Higgins, Hecobian, Baasandorj, Pacsi (Chevron Corporation)</p>
+                <div class="reference-item">
+                    [2] Higgins, S., Hecobian, A., Baasandorj, M., & Pacsi, A.P. (2024). A Practical Framework for 
+                    Oil and Gas Operators to Estimate Methane Emission Duration Using Operational Data. <em>SPE Journal</em>, 
+                    29(05), 2763-2771. <a href="https://doi.org/10.2118/219445-PA">doi:10.2118/219445-PA</a>
+                </div>
                 
-                <p class="study-summary">
-                    First industry framework for estimating emission duration using operational data from 26,292 active Permian wells. 
-                    Demonstrates that fugitive emissions persist indefinitely until detected and repaired—making frequent monitoring critical for gas recovery.
+                <div class="reference-item">
+                    [3] Zhang, Y., Gautam, R., Pandey, S., et al. (2020). Quantifying methane emissions from the 
+                    largest oil-producing basin in the United States from space. <em>Science Advances</em>, 6(17), 
+                    eaaz5120. <a href="https://doi.org/10.1126/sciadv.aaz5120">doi:10.1126/sciadv.aaz5120</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Vorntec. Technical document based on peer-reviewed scientific studies.</p>
+        </footer>
+    </div>
+
+    <!-- SPANISH CONTENT -->
+    <div class="lang-content" data-lang="es">
+        <!-- Executive Summary -->
+        <section class="executive-summary">
+            <div class="container">
+                <h1>Detección de Metano: Evidencia que Respalda la Recuperación del 6% de la Producción</h1>
+                
+                <p class="key-finding">
+                    Tres estudios independientes revisados por pares demuestran que <strong>las emisiones detectables de metano 
+                    (fugas fugitivas, condiciones operativas anormales y fallas de equipos) representan el 8–9% de la producción de gas,</strong> 
+                    con el <strong>50% concentrado en solo el 12% de las fuentes.</strong> Estas emisiones <strong>persisten hasta ser detectadas y reparadas,</strong> 
+                    permitiendo a los operadores <strong>recuperar hasta el 6% de la producción total de gas.</strong>
                 </p>
                 
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>Finding</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Average Event Duration</td>
-                            <td class="metric">3–5 hours (Wang et al. 2022)</td>
-                        </tr>
-                        <tr>
-                            <td>Sample Size</td>
-                            <td class="metric">26,292 active wells | Same Chen 2022 dataset</td>
-                        </tr>
-                        <tr>
-                            <td>Duration Attribution</td>
-                            <td class="metric">79% of emissions traced via operational data</td>
-                        </tr>
-                        <tr>
-                            <td>Impact Example</td>
-                            <td class="metric">100 kg/h leak: 0.16% lost if undetected 6 months vs. 0.001% if detected in 1 day</td>
-                        </tr>
-                        <tr>
-                            <td>Key Insight</td>
-                            <td class="metric">Emissions persist until repaired—don't self-heal</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="evidence-points">
+                    <div class="evidence-point">
+                        <div class="evidence-number">98,000+</div>
+                        <div class="evidence-label">Mediciones de sitios</div>
+                    </div>
+                    <div class="evidence-point">
+                        <div class="evidence-number">3-5 horas</div>
+                        <div class="evidence-label">Duración promedio<br>(hasta detección)</div>
+                    </div>
+                    <div class="evidence-point">
+                        <div class="evidence-number">6%</div>
+                        <div class="evidence-label">Producción recuperable</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Study 1 -->
+        <section>
+            <div class="container">
+                <h2>Evidencia de Respaldo</h2>
                 
-                <div class="implications">
-                    <h4>Implications for 6% Recovery</h4>
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">01</div>
+                        <div class="study-meta">Environmental Science & Technology • 2022</div>
+                    </div>
+                    
+                    <h3>Estudio Aéreo de Toda la Cuenca: 98,000 Sitios de Pozos Medidos</h3>
+                    <p class="study-authors">Chen, Sherwin, Berman, et al.</p>
+                    
+                    <p class="study-summary">
+                        La campaña de detección de metano más grande jamás realizada. Tecnología de imágenes hiperespectrales 
+                        validada independientemente midió el 90% de todos los pozos activos en la Cuenca Pérmica de Nuevo México 
+                        durante 15 meses.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Alcance del Estudio</td>
+                                <td class="metric">35,923 km² | 26,292 pozos | ~98,000 visitas</td>
+                            </tr>
+                            <tr>
+                                <td>Tasa de Fuga Medida</td>
+                                <td class="metric">9.4% (+3.5%/−3.3%)</td>
+                            </tr>
+                            <tr>
+                                <td>Contribución de Súper-Emisores</td>
+                                <td class="metric">50% de emisiones de 12% de fuentes</td>
+                            </tr>
+                            <tr>
+                                <td>vs. Inventario EPA</td>
+                                <td class="metric">6.5× mayor</td>
+                            </tr>
+                            <tr>
+                                <td>Plumas Detectables</td>
+                                <td class="metric">1,958 plumas por encima de 10 kg/h</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implicaciones para la Recuperación del 6%</h4>
+                        <p>
+                            Con 9.4% de emisiones totales, aproximadamente 8.5% representa fuentes detectables (fugas fugitivas, 
+                            fallas de equipos, condiciones anormales) después de excluir ~1% de quema. Con 50% de súper-emisores 
+                            (12% de fuentes), enfocarse solo en estos produce 4.25% recuperable. Incluyendo emisores detectables 
+                            grandes adicionales alcanza 6% de recuperación.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">02</div>
+                        <div class="study-meta">SPE Journal • 2024</div>
+                    </div>
+                    
+                    <h3>Análisis de Duración de Emisiones: Marco de Datos Operacionales</h3>
+                    <p class="study-authors">Higgins, Hecobian, Baasandorj, Pacsi (Chevron Corporation)</p>
+                    
+                    <p class="study-summary">
+                        Primer marco industrial para estimar la duración de emisiones usando datos operacionales de 26,292 pozos 
+                        activos del Pérmico. Demuestra que las emisiones fugitivas persisten indefinidamente hasta ser detectadas 
+                        y reparadas—haciendo crítico el monitoreo frecuente para la recuperación de gas.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Duración Promedio de Eventos</td>
+                                <td class="metric">3–5 horas (Wang et al. 2022)</td>
+                            </tr>
+                            <tr>
+                                <td>Tamaño de Muestra</td>
+                                <td class="metric">26,292 pozos activos | Mismo conjunto de datos Chen 2022</td>
+                            </tr>
+                            <tr>
+                                <td>Atribución de Duración</td>
+                                <td class="metric">79% de emisiones rastreadas vía datos operacionales</td>
+                            </tr>
+                            <tr>
+                                <td>Ejemplo de Impacto</td>
+                                <td class="metric">Fuga de 100 kg/h: 0.16% perdido si no detectado 6 meses vs. 0.001% si detectado en 1 día</td>
+                            </tr>
+                            <tr>
+                                <td>Perspectiva Clave</td>
+                                <td class="metric">Las emisiones persisten hasta reparación—no se auto-reparan</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implicaciones para la Recuperación del 6%</h4>
+                        <p>
+                            El análisis de duración prueba que las emisiones continúan desperdiciando gas indefinidamente sin detección. 
+                            Una sola fuente de 100 kg/h no detectada durante 6 meses equivale a 0.16% de pérdida de producción anual. 
+                            La detección frecuente que permite reparación el mismo día vs. inspección trimestral reduce el desperdicio 
+                            en 99%, habilitando directamente objetivos de recuperación del 6%.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="study">
+                    <div class="study-header">
+                        <div class="study-number">03</div>
+                        <div class="study-meta">Science Advances • 2020</div>
+                    </div>
+                    
+                    <h3>Validación Satelital: Confirmación Independiente</h3>
+                    <p class="study-authors">Zhang, Gautam, Pandey, et al.</p>
+                    
+                    <p class="study-summary">
+                        Observaciones satelitales TROPOMI con resolución de 7 km × 7 km proporcionan validación independiente 
+                        mediante modelado inverso atmosférico a través de toda la Cuenca Pérmica.
+                    </p>
+                    
+                    <table class="data-table">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Hallazgo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Tasa de Fuga del Pérmico</td>
+                                <td class="metric">3.7% de producción bruta</td>
+                            </tr>
+                            <tr>
+                                <td>Emisiones Totales de Cuenca</td>
+                                <td class="metric">2.7 ± 0.5 Tg/año</td>
+                            </tr>
+                            <tr>
+                                <td>vs. Promedio Nacional</td>
+                                <td class="metric">60% mayor que línea base de EE.UU.</td>
+                            </tr>
+                            <tr>
+                                <td>vs. Inventario EPA</td>
+                                <td class="metric">2× mayor</td>
+                            </tr>
+                            <tr>
+                                <td>Tasa de Quema</td>
+                                <td class="metric">4.6% de producción</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="implications">
+                        <h4>Implicaciones para la Recuperación del 6%</h4>
+                        <p>
+                            Las mediciones satelitales confirman independientemente la tasa de emisiones del 3.7%. Con ~1% de quema 
+                            (monitorizada separadamente vía sistemas de control de combustión), aproximadamente 2.7% representa fugas 
+                            fugitivas y fallas de equipos detectables. Combinado con los hallazgos del 9.4% de Chen, la evidencia 
+                            respalda una recuperación del 6% de fuentes detectables excluyendo la quema.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Bottom Line -->
+        <section class="bottom-line">
+            <div class="container">
+                <h2>Conclusión Principal</h2>
+                
+                <p class="conclusion-text">
+                    Tres estudios independientes usando diferentes metodologías—estudios aéreos comprehensivos (98,000 sitios), 
+                    análisis de duración operacional, y observaciones satelitales—demuestran hallazgos consistentes:
+                </p>
+                
+                <p class="conclusion-text">
+                    <strong>Las emisiones detectables de metano (fugas fugitivas, condiciones operativas anormales y fallas de equipos) 
+                    representan el 8–9% de la producción de gas,</strong> con el <strong>50% concentrado en solo el 12% de las fuentes.</strong> 
+                    Estos súper-emisores persisten indefinidamente hasta ser detectados, con duración promedio de eventos de 3–5 horas 
+                    pero pérdidas acumulativas creciendo con cada día sin detección.
+                </p>
+                
+                <div class="highlight-box">
                     <p>
-                        Duration analysis proves emissions continue wasting gas indefinitely without detection. A single 100 kg/h 
-                        source undetected for 6 months equals 0.16% of annual production lost. Frequent detection enabling 
-                        same-day repair vs. quarterly inspection reduces waste by 99%, directly enabling 6% recovery targets.
+                        La recuperación del 6% representa un objetivo conservador y científicamente validado. Con 9.4% de emisiones 
+                        totales y ~1% de quema (monitoreada separadamente), queda 8–9% detectable vía monitoreo avanzado. 
+                        Enfocarse en el 12% de fuentes súper-emisoras recupera 4.25%. Incluyendo fuentes detectables adicionales 
+                        alcanza el 6% de recuperación total.
                     </p>
                 </div>
-            </div>
-            
-            <div class="study">
-                <div class="study-header">
-                    <div class="study-number">03</div>
-                    <div class="study-meta">Science Advances • 2020</div>
-                </div>
                 
-                <h3>Satellite Validation: Independent Confirmation</h3>
-                <p class="study-authors">Zhang, Gautam, Pandey, et al.</p>
-                
-                <p class="study-summary">
-                    TROPOMI satellite observations with 7 km × 7 km resolution provide independent validation 
-                    through atmospheric inverse modeling across the entire Permian Basin.
-                </p>
-                
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th>Metric</th>
-                            <th>Finding</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Permian Leakage Rate</td>
-                            <td class="metric">3.7% of gross production</td>
-                        </tr>
-                        <tr>
-                            <td>Total Basin Emissions</td>
-                            <td class="metric">2.7 ± 0.5 Tg/year</td>
-                        </tr>
-                        <tr>
-                            <td>vs. National Average</td>
-                            <td class="metric">60% higher than U.S. baseline</td>
-                        </tr>
-                        <tr>
-                            <td>vs. EPA Inventory</td>
-                            <td class="metric">2× higher</td>
-                        </tr>
-                        <tr>
-                            <td>Flaring Rate</td>
-                            <td class="metric">4.6% of production</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="implications">
-                    <h4>Implications for 6% Recovery</h4>
-                    <p>
-                        Satellite measurements independently confirm 3.7% emissions rate. With ~1% from flaring 
-                        (monitored separately via combustion control systems), approximately 2.7% represents 
-                        detectable fugitive leaks and equipment malfunctions. Combined with Chen's 9.4% findings, 
-                        the evidence supports 6% recovery from detectable sources excluding flaring.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Bottom Line -->
-    <section class="bottom-line">
-        <div class="container">
-            <h2>Bottom Line</h2>
-            
-            <p class="conclusion-text">
-                Three independent studies using different methodologies—comprehensive aerial surveys (98,000 sites), 
-                operational duration analysis, and satellite observations—demonstrate consistent findings:
-            </p>
-            
-            <p class="conclusion-text">
-                <strong>Detectable methane emissions (fugitive leaks, abnormal operating conditions, and equipment malfunctions) 
-                represent 8–9% of gas production,</strong> with <strong>50% concentrated in just 12% of sources.</strong> 
-                These emitters persist indefinitely until detected, with average event durations of 3–5 hours but 
-                cumulative losses growing with each day undetected.
-            </p>
-            
-            <div class="highlight-box">
-                <p>
-                    Recovery of 6% represents a conservative and scientifically validated target. With 9.4% total emissions 
-                    and ~1% from flaring (monitored separately), 8–9% remains detectable via advanced monitoring. 
-                    Targeting the 12% of super-emitter sources alone recovers 4.7%. Including additional detectable 
-                    sources brings total recovery to 6%.
+                <p class="conclusion-text">
+                    El análisis de duración prueba la perspectiva crítica: <strong>las emisiones fugitivas no se auto-reparan.</strong> 
+                    Una fuga de 100 kg/h no detectada durante 6 meses desperdicia 0.16% de la producción anual, mientras que la 
+                    detección el mismo día reduce la pérdida a 0.001%—habilitando el objetivo de recuperación del 6% mediante 
+                    monitoreo frecuente y comprehensivo.
                 </p>
             </div>
-            
-            <p class="conclusion-text">
-                Duration analysis proves the critical insight: <strong>fugitive emissions don't self-heal.</strong> 
-                A 100 kg/h leak undetected for 6 months wastes 0.16% of annual production, while same-day detection 
-                reduces loss to 0.001%—enabling the 6% recovery target through frequent, comprehensive monitoring.
-            </p>
-        </div>
-    </section>
+        </section>
 
-    <!-- References -->
-    <section class="references">
-        <div class="container">
-            <h2>References</h2>
-            
-            <div class="reference-item">
-                [1] Chen, Y., Sherwin, E.D., Berman, E.S.F., Jones, B.B., Gordon, M.P., Wetherley, E.B., 
-                Kort, E.A., & Brandt, A.R. (2022). Quantifying Regional Methane Emissions in the New Mexico 
-                Permian Basin with a Comprehensive Aerial Survey. <em>Environmental Science & Technology</em>, 
-                56(7), 4317-4323. <a href="https://doi.org/10.1021/acs.est.1c06458">doi:10.1021/acs.est.1c06458</a>
+        <!-- References -->
+        <section class="references">
+            <div class="container">
+                <h2>Referencias</h2>
+                
+                <div class="reference-item">
+                    [1] Chen, Y., Sherwin, E.D., Berman, E.S.F., Jones, B.B., Gordon, M.P., Wetherley, E.B., 
+                    Kort, E.A., & Brandt, A.R. (2022). Quantifying Regional Methane Emissions in the New Mexico 
+                    Permian Basin with a Comprehensive Aerial Survey. <em>Environmental Science & Technology</em>, 
+                    56(7), 4317-4323. <a href="https://doi.org/10.1021/acs.est.1c06458">doi:10.1021/acs.est.1c06458</a>
+                </div>
+                
+                <div class="reference-item">
+                    [2] Higgins, S., Hecobian, A., Baasandorj, M., & Pacsi, A.P. (2024). A Practical Framework for 
+                    Oil and Gas Operators to Estimate Methane Emission Duration Using Operational Data. <em>SPE Journal</em>, 
+                    29(05), 2763-2771. <a href="https://doi.org/10.2118/219445-PA">doi:10.2118/219445-PA</a>
+                </div>
+                
+                <div class="reference-item">
+                    [3] Zhang, Y., Gautam, R., Pandey, S., et al. (2020). Quantifying methane emissions from the 
+                    largest oil-producing basin in the United States from space. <em>Science Advances</em>, 6(17), 
+                    eaaz5120. <a href="https://doi.org/10.1126/sciadv.aaz5120">doi:10.1126/sciadv.aaz5120</a>
+                </div>
             </div>
-            
-            <div class="reference-item">
-                [2] Higgins, S., Hecobian, A., Baasandorj, M., & Pacsi, A.P. (2024). A Practical Framework for 
-                Oil and Gas Operators to Estimate Methane Emission Duration Using Operational Data. <em>SPE Journal</em>, 
-                29(05), 2763-2771. <a href="https://doi.org/10.2118/219445-PA">doi:10.2118/219445-PA</a>
-            </div>
-            
-            <div class="reference-item">
-                [3] Zhang, Y., Gautam, R., Pandey, S., et al. (2020). Quantifying methane emissions from the 
-                largest oil-producing basin in the United States from space. <em>Science Advances</em>, 6(17), 
-                eaaz5120. <a href="https://doi.org/10.1126/sciadv.aaz5120">doi:10.1126/sciadv.aaz5120</a>
-            </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>All data sourced from peer-reviewed scientific publications</p>
-    </footer>
+        <!-- Footer -->
+        <footer>
+            <p>© 2026 Vorntec. Documento técnico basado en estudios científicos revisados por pares.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Language switching function
+        function switchLanguage(lang) {
+            // Hide all language content
+            const allContent = document.querySelectorAll('.lang-content');
+            allContent.forEach(content => {
+                content.classList.remove('active');
+            });
+            
+            // Show selected language content
+            const selectedContent = document.querySelectorAll(`[data-lang="${lang}"]`);
+            selectedContent.forEach(content => {
+                content.classList.add('active');
+            });
+            
+            // Update button states
+            const buttons = document.querySelectorAll('.lang-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Update HTML lang attribute
+            document.documentElement.lang = lang;
+            
+            // Save preference to localStorage
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Load saved language preference on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('preferredLanguage');
+            if (savedLang && savedLang !== 'en') {
+                // Find the button for saved language and click it
+                const langButtons = document.querySelectorAll('.lang-btn');
+                langButtons.forEach(btn => {
+                    if (btn.textContent.toLowerCase() === savedLang) {
+                        btn.click();
+                    }
+                });
+            }
+        });
+    </script>
 </body>
 </html>
